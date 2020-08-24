@@ -1,0 +1,32 @@
+<div class="container-fluid m-3">
+    <button type="button" class="btn btn-dark m-3 p-3" routerLink="/user-new">Add new user</button>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Card№</th>
+            <th scope="col">Name</th>
+            <th scope="col">Company</th>
+            <th scope="col">Department</th>          
+            <th scope="col">Last entrance time</th>
+            <th scope="col">Last exit time</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of dataServ.returnUsers()">
+            <td>{{user.cardId}}</td>
+            <td>{{user.name}}</td>
+            <td>{{dataServ.returnCompanyName(user.companyId)}}</td>
+            <td>{{dataServ.returnDepartmentNameByCompanyId(user.companyId,user.departmentId)}}</td>
+            <td>2020-07-27-19.30</td>
+            <td>2020-07-27-21.30</td>           
+            <td>
+                <button type="button" class="btn btn-secondary m-1 p-3" routerLink="/user-edit" (click)="editUser(user)">Edit user</button>
+                <button type="button" class="btn btn-danger m-1 p-3"(click)="deleteUser(user)">Remove user</button>
+            </td>  
+          </tr>             
+        </tbody>
+      </table>     
+   
+</div>
+

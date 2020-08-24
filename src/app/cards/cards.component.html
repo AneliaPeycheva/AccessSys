@@ -1,0 +1,24 @@
+<div class="container-fluid m-3">
+    <button type="button" class="btn btn-dark m-3 p-3" routerLink="/card-new">Add new card</button>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Card№</th>
+            <th scope="col">Card status</th>            
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let card of dataServ.returnCards()">         
+            <td>{{card.uid}}</td>
+            <td *ngIf="card.flag==0">available</td>     
+            <td *ngIf="card.flag==1">busy</td>                 
+            <td>               
+                <button type="button" class="btn btn-danger m-1 p-3" (click)="deleteCard(card)">Remove card</button>
+            </td>  
+          </tr>             
+        </tbody>
+      </table>     
+   
+</div>
+

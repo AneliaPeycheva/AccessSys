@@ -1,0 +1,27 @@
+<div class="container">
+    <h2>Add an user</h2>   
+        <div class="form-group">
+            <label for="exampleInputEmail1">Username</label>
+            <input [(ngModel)]="name"  type="username" class="form-control" aria-describedby="emailHelp" value={{name}}>{{name}}
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Card№</label>
+            <select  [(ngModel)]="cardId" class="form-control" id="exampleFormControlSelect2">                 
+                <option value="0" *ngIf="dataServ.returnAvailableCards().length==0">No available cards</option>            
+                <option *ngFor="let card of dataServ.returnAvailableCards()" value="{{ card.uid }}">{{card.uid}}</option>
+              </select>          
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Company</label>
+            <select [(ngModel)]="companyId" class="form-control" id="exampleFormControlSelect2">   
+                <option *ngFor="let company of dataServ.returnCompanies()" value="{{ company.uid }}">{{company.name}}</option>
+              </select>  
+        </div>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Department</label>
+            <select [(ngModel)]="departmentId" class="form-control" id="exampleFormControlSelect2">                
+                <option *ngFor="let department of dataServ.returnDepartments(companyId)" value="{{department.uid}}">{{department.name}}</option>
+              </select>  
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="createNewUser()">Submit</button>  
+</div>

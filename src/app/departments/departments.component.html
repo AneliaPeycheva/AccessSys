@@ -1,0 +1,14 @@
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="createNewDepartment()">
+        <h2>Add a new department in {{companyName}}</h2>
+        <label for="exampleInputEmail1">Department name</label>
+        <input [(ngModel)]="departmentName" type="text" class="form-control" placeholder="Enter department name" #departmentField="ngModel" name="departmentName" ngModel required>
+        <!-- <div class="alert alert-danger" *ngIf="departmentField.touched && departmentField.errors">
+            <div *ngIf="departmentField.errors.required">Company name is required</div>   
+        </div>   
+        <div class="alert alert-danger" *ngIf="departmentName.length >30 && departmentField.touched">
+            <div *ngIf="departmentName.length >45 && departmentField.touched">Company name has to be less than 45 characters</div>
+        </div>      -->
+        <button type="submit" [disabled]="form.invalid " class="btn btn-dark p-2 m-2">Submit</button>
+    </form>
+</div>

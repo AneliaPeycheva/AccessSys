@@ -1,0 +1,14 @@
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="createNewCard()">
+        <h2>Add new card</h2>
+        <label for="exampleInputEmail1">Card№</label>
+        <input [(ngModel)]="cardId" type="number" class="form-control" max='999999999' placeholder="Enter card№" #cardField="ngModel" name="cardId" ngModel required>
+        <div class="alert alert-danger" *ngIf="cardField.touched && cardField.errors">
+            <div *ngIf="cardField.errors.required">Card№ is required</div>
+        </div>
+        <div class="alert alert-danger" *ngIf="cardId < 99999999 && cardField.touched">
+            <div>Card№ has to be 9 characters</div>
+        </div>
+        <button type="submit" [disabled]="form.invalid || cardId < 99999999" class="btn btn-dark p-2 m-2">Submit</button>
+    </form>
+</div>

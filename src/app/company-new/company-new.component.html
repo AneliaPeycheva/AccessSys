@@ -1,0 +1,14 @@
+<div class="container">
+    <form #form="ngForm" (ngSubmit)="createNewCompany()">
+        <h2>Add new company</h2>
+        <label for="exampleInputEmail1">Company name</label>
+        <input [(ngModel)]="companyName" type="text" class="form-control" placeholder="Enter company name" #companyField="ngModel" name="companyName" ngModel required>
+        <div class="alert alert-danger" *ngIf="companyField.touched && companyField.errors">
+            <div *ngIf="companyField.errors.required">Company name is required</div>   
+        </div>   
+        <div class="alert alert-danger" *ngIf="companyName.length >45 && companyField.touched">
+            <div *ngIf="companyName.length >45 && companyField.touched">Company name has to be less than 45 characters</div>
+        </div>     
+        <button type="submit" [disabled]="form.invalid || companyName.length>45" class="btn btn-dark p-2 m-2">Submit</button>
+    </form>
+</div>
